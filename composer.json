@@ -1,0 +1,35 @@
+{
+    "name": "asad/vend-api-wrapper",
+    "description": "VEND API wrapper",
+    "require": {
+        "php": "^7.0",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "require-dev": {
+        
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Asadur Rahman",
+            "email": "asadku34@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Asad\\Vend\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Asad\\Vend\\Test\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Asad\\Vend\\VendServiceProvider"
+            ]
+        }
+    }
+}
