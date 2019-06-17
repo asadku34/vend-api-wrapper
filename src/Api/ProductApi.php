@@ -14,9 +14,9 @@ class ProductApi extends RestApi
      * @param $module = 'Product'
      * 
      */
-    public function allProducts()
+    public function allProducts($criteria = [])
     {
-        $request = $this->createRequest('all-records', 'products', []);
+        $request = $this->createRequest('all-records', 'products', $criteria);
         return $this->makeRequest($request);
     }
 

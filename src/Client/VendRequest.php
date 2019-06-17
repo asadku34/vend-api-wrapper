@@ -66,9 +66,12 @@ class VendRequest
     {
         $this->parameter = [];
         if ($action === 'all-records') {
+            foreach ($param as $key => $val) {
+                $this->parameter[$key] = $val;
+            }
             $this->setAction('All Records');
             $this->setHttpVerb('GET');
-            $this->URI = $this->module;
+            $this->URI = $this->module.(($this->getQuery()) ? "?".$this->getQuery() : '');
         }
 
         if ($action === 'single-record') {

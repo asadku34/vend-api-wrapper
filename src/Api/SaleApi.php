@@ -14,9 +14,9 @@ class SaleApi extends RestApi
      * @param $module = 'Sale'
      * 
      */
-    public function allSales()
+    public function allSales($criteria = [])
     {
-        $request = $this->createRequest('all-records', 'sales', []);
+        $request = $this->createRequest('all-records', 'sales', $criteria);
         return $this->makeRequest($request);
     }
 

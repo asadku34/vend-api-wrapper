@@ -14,9 +14,9 @@ class CustomerApi extends RestApi
      * @param $module = 'Customer'
      * 
      */
-    public function allCustomers()
+    public function allCustomers($criteria = [])
     {
-        $request = $this->createRequest('all-records', 'customers', []);
+        $request = $this->createRequest('all-records', 'customers', $criteria);
         return $this->makeRequest($request);
     }
 
