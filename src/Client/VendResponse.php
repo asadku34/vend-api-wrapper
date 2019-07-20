@@ -72,6 +72,10 @@ class VendResponse
 			$this->internalServerException($json_response);
 		}
 
+		if ($this->http_status_code == 404) {
+			$this->noContentException($json_response);
+		}
+
 		$error_response = json_decode($json_response);
 		$this->setStatus('error');
 		throw new ResponseException($error_response->error_description, $this->http_status_code, json_encode($error_response));
@@ -84,7 +88,7 @@ class VendResponse
 		throw new ResponseException($error_response->error_description, $this->http_status_code, json_encode($error_response));
 	}
 
-	private function noContentException()
+	private function noContentException($json_response)
 	{
 		$this->setStatus("error");
 		$error_response = [
