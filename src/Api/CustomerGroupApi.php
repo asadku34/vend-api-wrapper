@@ -2,7 +2,6 @@
 namespace Asad\Vend\Api;
 
 use Asad\Vend\Abstracts\RestApi;
-use Asad\Vend\Client\VendRequest;
 
 class CustomerGroupApi extends RestApi
 {
