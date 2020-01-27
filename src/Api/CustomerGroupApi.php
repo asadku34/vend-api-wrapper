@@ -11,7 +11,7 @@ class CustomerGroupApi extends RestApi
     }
     /**
      * @param $module = 'Customer'
-     * 
+     *
      */
     public function allCustomerGroups($criteria = [])
     {

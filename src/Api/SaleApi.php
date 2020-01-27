@@ -11,7 +11,7 @@ class SaleApi extends RestApi
     }
     /**
      * @param $module = 'Sale'
-     * 
+     *
      */
     public function allSales($criteria = [])
     {

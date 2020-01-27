@@ -11,7 +11,7 @@ class RegisterApi extends RestApi
     }
     /**
      * @param $module = 'Register'
-     * 
+     *
      */
     public function allRegisters($criteria = [])
     {

@@ -6,8 +6,8 @@ use Asad\Vend\Exception\RequestException;
 class VendRequest
 {
     /**
-     * Query parameter 
-     * */ 
+     * Query parameter
+     * */
     protected $parameter = null;
     protected $action = null;
     protected $module = null;
@@ -20,7 +20,7 @@ class VendRequest
 	*
 	* @param Query
 	*/
-    public function __construct($action, $module, array $param) 
+    public function __construct($action, $module, array $param)
     {
         $this->setModule($module);
         $this->processRequest($action, $param);
@@ -79,7 +79,6 @@ class VendRequest
             $this->setHttpVerb('GET');
             $this->URI = $this->module .'/'. implode('',$param);
         }
-        
         return $this->parameter;
     }
 
@@ -103,7 +102,7 @@ class VendRequest
         return $this;
     }
 
-    public function getDataJson() 
+    public function getDataJson()
     {
         return $this->data_json;
     }

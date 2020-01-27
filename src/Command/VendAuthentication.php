@@ -54,13 +54,12 @@ class VendAuthentication extends Command
         $protocol       = $this->choice('Select your protocol.', ['http', 'https'], 0);
         $redirect_route =  $protocol .'://'. rtrim($client_domain, '/') . '/vendOauth2back';
 
-        
         $redirect_url = 'https://secure.vendhq.com/connect?response_type=code&client_id='.$client_id.'&redirect_uri='.$redirect_route.'&state=au';
 
         $flight = VendOauthSetting::updateOrCreate(
             ['client_id' => $client_id],
             [
-                'client_id'         => $client_id, 
+                'client_id'         => $client_id,
                 'client_secret'     => $client_secret,
                 'client_domain'     => $client_domain,
                 'protocol'          => $protocol,

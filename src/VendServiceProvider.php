@@ -14,7 +14,6 @@ class VendServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
         if ($this->app->runningInConsole()) {
             $this->commands([
                 VendAuthentication::class,
@@ -22,7 +21,6 @@ class VendServiceProvider extends ServiceProvider
         }
 
         $this->registerResources();
-        
     }
 
     /**
@@ -32,7 +30,7 @@ class VendServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        
+        //Register service
     }
 
 
@@ -47,7 +45,7 @@ class VendServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/migrations');
         $this->registerRoutes();
     }
-    
+
     /**
      * Register the package routes.
      *

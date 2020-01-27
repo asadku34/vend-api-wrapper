@@ -31,15 +31,15 @@ class VendException extends Exception
     /**
 	 * @return int
 	 */
-	public function getHttpStatusCode(): int 
+	public function getHttpStatusCode(): int
 	{
 		return intval($this->http_status_code);
     }
 
-    /** 
-     * @return JSON 
+    /**
+     * @return JSON
      */
-    
+
     public function getExceptionJson()
     {
         return $this->exception_json;

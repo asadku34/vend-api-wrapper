@@ -11,7 +11,7 @@ class BrandApi extends RestApi
     }
     /**
      * @param $module = 'Brand'
-     * 
+     *
      */
     public function allBrands($criteria = [])
     {

@@ -11,7 +11,7 @@ class UserApi extends RestApi
     }
     /**
      * @param $module = 'User'
-     * 
+     *
      */
     public function allUsers($criteria = [])
     {

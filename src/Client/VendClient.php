@@ -19,9 +19,9 @@ class VendClient
         $this->setClient(new Client());
     }
 
-     /* 
+     /*
      * @param Guzzle Client
-     * 
+     *
      * @return Vend Client
      *  */
 
@@ -42,7 +42,7 @@ class VendClient
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer '.$access_token
         ];
-        
+
         try {
             $res = $this->client->request($http_verb, $url, $data_header);
         } catch (GuzzleRequestException $e) {
@@ -52,7 +52,6 @@ class VendClient
                 throw new VendException($e->getMessage());
             }
         }
-        
         return new VendResponse($res, $action);
     }
 
@@ -68,7 +67,6 @@ class VendClient
                 throw new VendException($e->getMessage());
             }
         }
-        
         return new VendResponse($res, $action);
     }
 
@@ -83,7 +81,6 @@ class VendClient
                 throw new VendException($e->getMessage());
             }
         }
-        
         return new VendResponse($res, $action);
     }
 

@@ -10,12 +10,10 @@ use Asad\Vend\Models\VendOauthSetting;
 
 class VendController extends Controller
 {
-    
     public function oauth2back(Request $request)
     {
         if($request->input('code')){
             $vend_setting = VendOauthSetting::orderBy('created_at', 'desc')->take(1)->first();
-			
 			if($vend_setting){
                 $code           = $request->input('code');
                 $domain_prefix  = $request->input('domain_prefix');
@@ -23,10 +21,10 @@ class VendController extends Controller
                 $client_id      = $vend_setting->client_id;
                 $client_secret  = $vend_setting->client_secret;
 
-				$request_url 	= 'https://'.$domain_prefix.'.vendhq.com/api/1.0/token';
-                
+                $request_url 	= 'https://'.$domain_prefix.'.vendhq.com/api/1.0/token';
+
                 try {
-                    $data = [
+                    $vend_data = [
                         'form_params' => [
                             'code' => $code,
                             'redirect_uri' => $redirect_url,
@@ -35,7 +33,7 @@ class VendController extends Controller
                             'grant_type' => 'authorization_code',
                         ]
                     ];
-                    $vend_response = $this->getClient()->post($request_url, 'accessCode', $data);
+                    $vend_response = $this->getClient()->post($request_url, 'accessCode', $vend_data);
                     $vend_response = $vend_response->getResults();
                 } catch (VendException $e) {
                     $vend_response = $e->getResponse();
@@ -43,11 +41,11 @@ class VendController extends Controller
                     //dd($vend_response->error);
                     //echo $e->getMessage();
                 }
-                
+
                 if (isset($vend_response->error)) {
                     return json_encode(['status' => 'failed', 'message' => $vend_response->error]);
                 }
-                
+
 				if($vend_response != null && isset($vend_response->access_token)){
 
                     $data['access_token']   = $vend_response->access_token;
@@ -55,7 +53,7 @@ class VendController extends Controller
                     $data['token_type']     = $vend_response->token_type;
                     $data['expires_in']     = $vend_response->expires;
                     $data['expires_in_sec'] = $vend_response->expires_in;
-                    
+
                     if (isset($vend_response->refresh_token)) {
                         $data['refresh_token']  = $vend_response->refresh_token;
                     }
@@ -72,7 +70,7 @@ class VendController extends Controller
                         $response['status'] = 'failed';
                         $response['message'] = 'You have failed to generate the access token. Please check and try again.';
                     }
-                    
+
                     return json_encode($response);
 				}
 			}

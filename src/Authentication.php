@@ -11,8 +11,8 @@ class Authentication
     /**
      * Vend Authentication API url base part
      */
-    private $auth_api = 'api/1.0/token'; 
-    
+    private $auth_api = 'api/1.0/token';
+
     /**
      * Api access token
      */
@@ -38,10 +38,9 @@ class Authentication
             echo $e->getMessage();
             exit;
         }
-        
     }
 
-    public function getAccessToken(): string 
+    public function getAccessToken(): string
     {
         return $this->access_token;
     }
@@ -63,7 +62,7 @@ class Authentication
             try {
                 $this->refreshAccessToken($setting);
             } catch (VendException $e) {
-                echo $e->getMessage(); 
+                echo $e->getMessage();
                 echo "<br>It's seems something happened to your refresh token.";
                 exit;
             }
@@ -77,11 +76,8 @@ class Authentication
     public function refreshAccessToken($setting)
     {
         $id = $setting->id;
-
         $domain_prefix = $setting->domain_prefix;
-        
         $refresh_url	= $this->getRefreshTokenUrl($domain_prefix);
-        
         $data = [
             'form_params' => [
                 'refresh_token' => $setting->refresh_token,
@@ -101,9 +97,7 @@ class Authentication
         $setting->expires_in    = $response->expires;
         $setting->expires_in_sec= $response->expires_in;
         $setting->save();
-        
         $this->access_token = $response->access_token;
-		
     }
 
     public function getRefreshTokenUrl($domain_prefix)

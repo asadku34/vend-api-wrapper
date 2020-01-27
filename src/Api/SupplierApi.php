@@ -11,7 +11,7 @@ class SupplierApi extends RestApi
     }
     /**
      * @param $module = 'Supplier'
-     * 
+     *
      */
     public function allSuppliers($criteria = [])
     {

@@ -11,18 +11,12 @@ class VendOauthSetting extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'client_id', 'client_secret', 'access_token', 'refresh_token', 'protocol', 
-        'token_type', 'expires_in', 'expires_in_sec', 'client_domain', 'api_domain',
-        'domain_prefix', 'state'
-    ];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-
-    ];
+    protected $hidden = [];
 }

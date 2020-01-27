@@ -6,17 +6,12 @@ use Asad\Vend\Exception\ResponseException;
 use GuzzleHttp\Psr7\Response;
 
 class VendResponse
-{	
+{
   	protected $response = null;
-
     protected $results = null;
-
     protected $status = null;
-
     protected $error_message = null;
-
     protected $array_response = null;
-
 	protected $http_status_code = null;
 
 
@@ -25,25 +20,23 @@ class VendResponse
 	*
 	* @param Response $response
 	*/
-    public function __construct(Response $response, $action) 
+    public function __construct(Response $response, $action)
     {
 		$this->setResponse($response);
 		$this->checkHttpStatusCode();
 		$this->parseResponse($action);
     }
-    
     /**
 	 * @param Response $response
 	 *
 	 * @return VendResponse
 	 */
-	public function setResponse(Response $response): VendResponse 
+	public function setResponse(Response $response): VendResponse
 	{
 		$this->response = $response;
 		return $this;
 	}
 
-		
 	/**
 	 * @return VendResponse
 	 *
@@ -51,7 +44,6 @@ class VendResponse
 	 */
 	protected function parseResponse($action): VendResponse
 	{
-		
 		$json_response = $this->response->getBody()->getContents();
 		$invoke_function = camel_case(str_replace(' ', '', $action));
 		return $this->$invoke_function($json_response);
@@ -125,7 +117,7 @@ class VendResponse
 
 	//Record Response
 	private function recordResponse($json_response)
-	{ 
+	{
 		if ($this->http_status_code == 200) {
 			return $this->setSuccessResponse($json_response);
 		}
@@ -147,7 +139,7 @@ class VendResponse
 	 * Check HTTP status code (silent/No exceptions!)
 	 * @return int
 	 */
-	protected function checkHttpStatusCode(): int 
+	protected function checkHttpStatusCode(): int
 	{
 		$this->http_status_code = $this->response->getStatusCode();
 		return $this->http_status_code;
@@ -157,16 +149,16 @@ class VendResponse
 	 *
 	 * @return array
 	 */
-	public function toArray(string $json_response): array 
+	public function toArray(string $json_response): array
 	{
 		$this->array_response = json_decode($json_response, true);
 		return $this->array_response;
 	}
-		
+
 	/**
 	 * @return array
 	 */
-	public function getResults() 
+	public function getResults()
 	{
 		return $this->results;
 	}
@@ -175,7 +167,7 @@ class VendResponse
 	 *
 	 * @return $this
 	 */
-	public function setResults($results) 
+	public function setResults($results)
 	{
 		$this->results = json_decode($results);
 		return $this;
@@ -183,7 +175,7 @@ class VendResponse
 	/**
 	 * @return string
 	 */
-	public function getStatus(): string 
+	public function getStatus(): string
 	{
 		return $this->status;
 	}
@@ -192,7 +184,7 @@ class VendResponse
 	 *
 	 * @return VendRespone
 	 */
-	public function setStatus(string $status): VendResponse 
+	public function setStatus(string $status): VendResponse
 	{
 		$this->status = $status;
 		return $this;
@@ -200,7 +192,7 @@ class VendResponse
 	/**
 	 * @return array
 	 */
-	public function getArrayResponse(): array 
+	public function getArrayResponse(): array
 	{
 		return $this->array_response;
 	}
@@ -209,7 +201,7 @@ class VendResponse
 	 *
 	 * @return VendResponse
 	 */
-	public function setArrayResponse(array $array_response): VendResponse 
+	public function setArrayResponse(array $array_response): VendResponse
 	{
 		$this->array_response = $array_response;
 		return $this;
@@ -217,7 +209,7 @@ class VendResponse
 	/**
 	 * @return mixed
 	 */
-	public function getErrorMessage() 
+	public function getErrorMessage()
 	{
 		return $this->error_message;
 	}
@@ -226,7 +218,7 @@ class VendResponse
 	 *
 	 * @return VendResponse
 	 */
-	public function setErrorMessage($error_message): VendResponse 
+	public function setErrorMessage($error_message): VendResponse
 	{
 		$this->error_message = $error_message;
 		return $this;
@@ -234,7 +226,7 @@ class VendResponse
 	/**
 	 * @return int
 	 */
-	public function getHttpStatusCode(): int 
+	public function getHttpStatusCode(): int
 	{
 		return intval($this->http_status_code);
 	}

@@ -11,7 +11,7 @@ class CustomerApi extends RestApi
     }
     /**
      * @param $module = 'Customer'
-     * 
+     *
      */
     public function allCustomers($criteria = [])
     {

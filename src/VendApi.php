@@ -47,7 +47,7 @@ class VendApi
         }else{
             throw new VendException("Please check your domain prefix.");
         }
-        $this->api_url = 'https://'.$domain_prefix.'.vendhq.com/api/2.0';   
+        $this->api_url = 'https://'.$domain_prefix.'.vendhq.com/api/2.0';
     }
 
     public function getApiUrl()

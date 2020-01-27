@@ -11,7 +11,7 @@ class TagApi extends RestApi
     }
     /**
      * @param $module = 'Tag'
-     * 
+     *
      */
     public function allTags($criteria = [])
     {

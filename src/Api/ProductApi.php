@@ -11,7 +11,7 @@ class ProductApi extends RestApi
     }
     /**
      * @param $module = 'Product'
-     * 
+     *
      */
     public function allProducts($criteria = [])
     {

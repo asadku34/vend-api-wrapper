@@ -14,7 +14,7 @@ abstract class RestApi
 
     /**
      * @param VendApi $vend_api
-     * 
+     *
      * @return VendApi
      */
     public function setVendApi(VendApi $vend_api): RestApi
@@ -33,11 +33,11 @@ abstract class RestApi
 
     /**
      * @param string $action = 'get'
-     * 
+     *
      * @param string $module = 'customer'
-     * 
+     *
      * @param array $param = [customer_id]
-     * 
+     *
      * @return VendRequest object
      */
     public function createRequest($action, $module, array $param): VendRequest
@@ -47,7 +47,7 @@ abstract class RestApi
 
     /**
      * @param VendRequest $request
-     * 
+     *
      * @return VendApi response
      */
     public function makeRequest(VendRequest $request)
